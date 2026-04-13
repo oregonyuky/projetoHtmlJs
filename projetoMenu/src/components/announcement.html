@@ -1,0 +1,42 @@
+<style>
+  @keyframes slide-left {
+    from { transform: translateX(100%); }
+    to { transform: translateX(-100%); }
+  }
+  .slide-left {
+    display: inline-block;
+    animation: slide-left 10s linear infinite;
+    white-space: nowrap;
+  }
+</style>
+
+<div 
+  class="border-b border-gray-200 bg-gray-100 px-4 py-2 text-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+  x-data="{ 
+    active: 0, 
+    messages: [
+      'Loyalty Offer: Spend $100, Earn $5 To Spend On Your Next Order - <a href=\'#\' class=\'underline\'>Find Out More</a>',
+      'Frete Grátis em compras acima de R$ 199,00 para todo o Brasil!',
+      'Parcele suas compras em até 10x sem juros no cartão de crédito.',
+      'Novos estilos de vestidos adicionados à coleção Primavera 2026!'
+    ] 
+  }"
+  x-init="setInterval(() => { active = (active === messages.length - 1) ? 0 : active + 1 }, 6000)"
+>
+  <div class="relative h-6 overflow-hidden">
+    <template x-for="(msg, index) in messages" :key="index">
+      <div 
+        x-show="active === index"
+        x-transition:enter="transition ease-out duration-500"
+        x-transition:enter-start="opacity-0 translate-y-4"
+        x-transition:enter-end="opacity-100 translate-y-0"
+        x-transition:leave="transition ease-in duration-500"
+        x-transition:leave-start="opacity-100 translate-y-0"
+        x-transition:leave-end="opacity-0 -translate-y-4"
+        class="absolute w-full text-center font-medium text-sm sm:text-base"
+      >
+        <span class="slide-left" x-html="msg"></span>
+      </div>
+    </template>
+  </div>
+</div>
