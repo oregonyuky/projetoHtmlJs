@@ -1,4 +1,4 @@
-<header x-data="{ mobileOpen: false }" class="bg-white dark:bg-[#EDDFE1]">
+<header x-data="{ mobileOpen: false, accountOpen: false }" class="bg-white dark:bg-[#EDDFE1]">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Logo centralizado acima -->
     <div class="flex justify-center py-4">
@@ -22,7 +22,7 @@
       <div class="hidden md:block">
         <nav class="border-b border-gray-200 font-sans">
           <div class="max-w-7xl mx-auto px-4">
-            <div class="flex items-center h-16 space-x-4 dark:bg-[#EDDFE1] gap-10">
+            <div class="flex items-center h-16 space-x-4 dark:bg-[#EDDFE1] gap-3">
               
               <div class="group h-full flex items-center">
                 <button class="h-full text-sm font-medium text-gray-700 group-hover:text-blue-600 border-b-2 border-transparent group-hover:border-blue-600 transition-all cursor-pointer">
@@ -310,17 +310,36 @@
         <div class="sm:flex sm:gap-4">
        
 
-          <div class="flex items-center gap-3">
+          <div class="flex items-center gap-2">
 
-  <!-- Usuário -->
-            <a href="#" title="Conta"
+            <!-- Buscar -->
+            <a href="#" title="Buscar"
               class="rounded-md bg-gray-100 p-2 text-gray-600 transition hover:text-teal-600 dark:bg-gray-800 dark:text-white">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
                   viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M5.121 17.804A4 4 0 017 17h10a4 4 0 011.879.804M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
               </svg>
             </a>
+
+  <!-- Usuário -->
+            <div class="relative">
+              <button title="Conta" @click="accountOpen = !accountOpen"
+                class="rounded-md bg-gray-100 p-2 text-gray-600 transition hover:text-teal-600 dark:bg-gray-800 dark:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M5.121 17.804A4 4 0 017 17h10a4 4 0 011.879.804M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </button>
+
+              <div x-show="accountOpen" x-transition class="absolute top-full right-0 mt-2 w-48 bg-white shadow-xl border border-gray-100 transition-all duration-200 z-60">
+                <ul class="py-2">
+                  <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Login</a></li>
+                  <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Registro</a></li>
+                </ul>
+              </div>
+            </div>
 
             <!-- Favoritos -->
             <a href="#" title="Favoritos"
@@ -336,26 +355,20 @@
             <a href="#" title="Carrinho"
               class="relative flex items-center justify-center rounded-md bg-gray-100 p-2 text-gray-600 transition hover:text-teal-600 dark:bg-gray-800 dark:text-white">
 
-              <!-- Ícone -->
-              <svg class="h-5 w-5" viewBox="0 0 448 512" fill="currentColor">
-                <path d="M128 128V96C128 42.98 170.1 0 224 0C277 0 320 42.98 320 96V128H400C426.5 128 448 149.5 448 176V416C448 469 405 512 352 512H96C42.98 512 0 469 0 416V176C0 149.5 21.49 128 48 128H128zM160 128H288V96C288 60.65 259.3 32 224 32C188.7 32 160 60.65 160 96V128zM48 160C39.16 160 32 167.2 32 176V416C32 451.3 60.65 480 96 480H352C387.3 480 416 451.3 416 416V176C416 167.2 408.8 160 400 160H320V240C320 248.8 312.8 256 304 256C295.2 256 288 248.8 288 240V160H160V240C160 248.8 152.8 256 144 256C135.2 256 128 248.8 128 240V160H48z"/>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
               </svg>
 
-              <!-- Badge -->
               <span class="absolute -top-1 -right-1 flex items-center justify-center rounded-full bg-teal-600 px-1.5 text-xs text-white">
                 3
               </span>
-
             </a>
 
             <!-- Notificações -->
             <a href="#" title="Notificações"
               class="relative rounded-md bg-gray-100 p-2 text-gray-600 transition hover:text-yellow-500 dark:bg-gray-800 dark:text-white">
-              
-              <!-- Badge -->
-              <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1.5">
-                5
-              </span>
 
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
                   viewBox="0 0 24 24" stroke="currentColor">
@@ -367,6 +380,11 @@
                         1.436L4 17h5m6 0v1a3 3 0 
                         11-6 0v-1m6 0H9"/>
               </svg>
+
+              <!-- Badge DEPOIS do SVG -->
+              <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1.5">
+                5
+              </span>
             </a>
 
           </div>
@@ -376,12 +394,12 @@
           <button @click="mobileOpen = !mobileOpen" :aria-expanded="mobileOpen.toString()" class="rounded-sm bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75 dark:bg-gray-800 dark:text-white dark:hover:text-white/75">
             <span class="sr-only">Abrir menu</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
             </svg>
           </button>
         </div>
       </div>
-      <div x-show="mobileOpen" x-cloak x-transition class="md:hidden mt-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+      <div x-show="mobileOpen" x-cloak x-transition class="md:hidden mt-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm w-full z-50">
         <nav class="space-y-3">
           <a href="#" class="block rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100">NOVOS</a>
           <a href="#" class="block rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100">ROUPAS</a>

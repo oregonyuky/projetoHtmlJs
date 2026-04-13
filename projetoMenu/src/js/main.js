@@ -25,18 +25,6 @@ class MyAnnouncement extends HTMLElement {
     connectedCallback() { loadComponent(this, './src/components/announcement.html'); }
 }
 
-class MainAnnouncement extends HTMLElement {
-    async connectedCallback() {
-        try {
-            const response = await fetch('./src/components/announcement.html');
-            this.innerHTML = await response.text();
-        } catch (error) {
-            console.error('Erro ao carregar announcement:', error);
-        }
-    }
-}
-
-customElements.define('main-announcement', MainAnnouncement);
 
 // No seu src/js/main.js, adicione a definição para o banner
 // Registro dos componentes
