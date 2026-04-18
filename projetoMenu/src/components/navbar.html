@@ -1,4 +1,4 @@
-<header x-data="{ mobileOpen: false, accountOpen: false }" class="bg-white dark:bg-[#EDDFE1]">
+<header x-data="{ mobileOpen: false, accountOpen: false }" class="bg-white dark:bg-[#EDDFE1] z-[1000]">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Logo centralizado acima -->
     <div class="flex justify-center py-4">
@@ -29,7 +29,7 @@
                   NOVOS
                 </button>
 
-                <div class="absolute top-46 left-0 w-full bg-white shadow-xl border-t border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div class="absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <div class="max-w-7xl mx-auto p-8 grid grid-cols-4 gap-8">
                     
                     <div>
@@ -314,7 +314,7 @@
 
             <!-- Buscar -->
             <a href="#" title="Buscar"
-              class="rounded-md bg-gray-100 p-2 text-gray-600 transition hover:text-teal-600 dark:bg-gray-800 dark:text-white">
+              class="text-gray-600 transition hover:text-teal-600 dark:text-white">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
                   viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -325,7 +325,7 @@
   <!-- Usuário -->
             <div class="relative">
               <button title="Conta" @click="accountOpen = !accountOpen"
-                class="rounded-md bg-gray-100 p-2 text-gray-600 transition hover:text-teal-600 dark:bg-gray-800 dark:text-white">
+                class="text-gray-600 transition hover:text-teal-600 dark:text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
                     viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -343,7 +343,7 @@
 
             <!-- Favoritos -->
             <a href="#" title="Favoritos"
-              class="rounded-md bg-gray-100 p-2 text-gray-600 transition hover:text-red-500 dark:bg-gray-800 dark:text-white">
+              class="text-gray-600 transition hover:text-red-500 dark:text-white">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
                   viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
