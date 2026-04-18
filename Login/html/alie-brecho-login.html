@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Alie Brechó — Entrar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ─── LEFT ─── -->
+  <div class="left">
+    <div class="petal">🌸</div>
+    <div class="petal">✿</div>
+    <div class="petal">🌷</div>
+    <div class="petal">✦</div>
+    <div class="petal">🌺</div>
+    <div class="petal">❀</div>
+    <div class="left__bg-text">Alie</div>
+
+    <div class="left__brand">
+      <a href="#" class="left__logo">Alie <em>Brechó</em></a>
+      <span class="left__tagline">Moda circular com alma</span>
+    </div>
+
+    <div class="left__card">
+      <span class="left__card-icon">🌸</span>
+      <p class="left__card-quote">"Cada peça tem uma história — que agora vai continuar com você."</p>
+      <div class="left__card-divider"></div>
+      <div class="left__card-stats">
+        <div class="stat-item">
+          <span class="stat-item__num">2.4k+</span>
+          <span class="stat-item__label">Clientes</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-item__num">98%</span>
+          <span class="stat-item__label">Satisfação</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-item__num">5★</span>
+          <span class="stat-item__label">Avaliação</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="left__flowers">
+      <span>🌸</span><span>✦</span><span>🌿</span><span>✦</span><span>🌷</span>
+    </div>
+  </div>
+
+  <!-- ─── RIGHT ─── -->
+  <div class="right">
+    <a href="#" class="back-link">Voltar à loja</a>
+
+    <div class="form-box" id="formBox">
+
+      <!-- TABS -->
+      <div class="tabs">
+        <button class="tab active" id="tabLogin"    onclick="switchTab('login')">Entrar</button>
+        <button class="tab"        id="tabRegister" onclick="switchTab('register')">Criar conta</button>
+      </div>
+
+      <!-- ══ LOGIN ══ -->
+      <div id="loginPanel">
+        <h1 class="form-title">Olá, <em>linda</em> 🌸</h1>
+        <p class="form-sub">Entre na sua conta e encontre peças únicas feitas para você.</p>
+
+        <div class="social-login">
+          <button class="social-btn" onclick="socialLogin('Google')">
+            <span class="social-btn__icon">🌐</span>Continuar com Google
+          </button>
+          <button class="social-btn" onclick="socialLogin('Instagram')">
+            <span class="social-btn__icon">📸</span>Continuar com Instagram
+          </button>
+        </div>
+
+        <div class="divider"><span>ou use seu e-mail</span></div>
+
+        <form id="loginForm" novalidate>
+          <div class="field">
+            <label class="field__label">E-mail</label>
+            <input class="field__input" id="loginEmail" type="email" placeholder="seu@email.com" autocomplete="email"/>
+            <div class="field__error" id="loginEmailErr">Insira um e-mail válido.</div>
+          </div>
+          <div class="field">
+            <label class="field__label">Senha</label>
+            <input class="field__input" id="loginPass" type="password" placeholder="Sua senha" autocomplete="current-password"/>
+            <button type="button" class="field__toggle" id="toggleLoginPass">👁</button>
+            <div class="field__error" id="loginPassErr">Mínimo 6 caracteres.</div>
+          </div>
+          <div class="check-row">
+            <label class="checkbox-label">
+              <input type="checkbox" id="rememberMe"/>
+              <div class="checkbox-custom"></div>
+              Lembrar de mim
+            </label>
+            <a href="#" class="forgot-link" id="forgotLink">Esqueci minha senha</a>
+          </div>
+          <button type="submit" class="btn-submit" id="loginBtn">
+            <span class="btn-submit__text">Entrar na conta</span>
+            <div class="btn-submit__spinner"></div>
+          </button>
+        </form>
+        <p class="switch-text">Ainda não tem conta? <a onclick="switchTab('register')">Criar agora</a></p>
+      </div>
+
+      <!-- ══ REGISTER ══ -->
+      <div id="registerPanel" style="display:none">
+        <h1 class="form-title">Bem-vinda, <em>nova amiga</em> ✿</h1>
+        <p class="form-sub">Faça parte da nossa comunidade de moda circular.</p>
+
+        <div class="social-login">
+          <button class="social-btn" onclick="socialLogin('Google')">
+            <span class="social-btn__icon">🌐</span>Cadastrar com Google
+          </button>
+        </div>
+
+        <div class="divider"><span>ou preencha seus dados</span></div>
+
+        <form id="registerForm" novalidate>
+          <div class="field-row">
+            <div class="field">
+              <label class="field__label">Nome</label>
+              <input class="field__input" id="regName" type="text" placeholder="Nome" autocomplete="given-name"/>
+              <div class="field__error" id="regNameErr">Nome obrigatório.</div>
+            </div>
+            <div class="field">
+              <label class="field__label">Sobrenome</label>
+              <input class="field__input" id="regLast" type="text" placeholder="Sobrenome" autocomplete="family-name"/>
+              <div class="field__error" id="regLastErr">Obrigatório.</div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__label">E-mail</label>
+            <input class="field__input" id="regEmail" type="email" placeholder="seu@email.com" autocomplete="email"/>
+            <div class="field__error" id="regEmailErr">Insira um e-mail válido.</div>
+          </div>
+          <div class="field">
+            <label class="field__label">Senha</label>
+            <input class="field__input" id="regPass" type="password" placeholder="Crie uma senha forte" autocomplete="new-password"/>
+            <button type="button" class="field__toggle" id="toggleRegPass">👁</button>
+            <div class="strength-bar">
+              <div class="strength-seg" id="s1"></div>
+              <div class="strength-seg" id="s2"></div>
+              <div class="strength-seg" id="s3"></div>
+              <div class="strength-seg" id="s4"></div>
+            </div>
+            <span class="strength-label" id="strengthLabel"></span>
+            <div class="field__error" id="regPassErr">Mínimo 6 caracteres.</div>
+          </div>
+          <div class="field">
+            <label class="field__label">Confirmar senha</label>
+            <input class="field__input" id="regPassConf" type="password" placeholder="Repita a senha" autocomplete="new-password"/>
+            <button type="button" class="field__toggle" id="toggleRegPassConf">👁</button>
+            <div class="field__error" id="regPassConfErr">As senhas não coincidem.</div>
+          </div>
+          <p class="terms-text">Ao criar sua conta você concorda com os <a href="#">Termos de Uso</a> e a <a href="#">Política de Privacidade</a>.</p>
+          <button type="submit" class="btn-submit" id="registerBtn">
+            <span class="btn-submit__text">Criar minha conta ✿</span>
+            <div class="btn-submit__spinner"></div>
+          </button>
+        </form>
+        <p class="switch-text">Já tem uma conta? <a onclick="switchTab('login')">Entrar</a></p>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="success-state" id="successState">
+        <span class="success-icon">🌸</span>
+        <h2 class="success-title">Seja bem-vinda!</h2>
+        <p class="success-sub" id="successMsg">Entrando na sua conta...<br>Redirecionando para a loja.</p>
+      </div>
+
+    </div><!-- /form-box -->
+
+    <div class="corner-dots">
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+<script src="../js/script.js"></script>
+</body>
+</html>

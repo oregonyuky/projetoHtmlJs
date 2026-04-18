@@ -921,6 +921,107 @@ footer{
   .newsletter{padding:60px 20px}
   .cart-drawer{width:100%}
 }
+/* ─── DROP BANNER ─── */
+.drop-banner{
+  margin:60px 60px 80px;
+  padding:60px;
+  border-radius:24px;
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+
+  background:
+    radial-gradient(ellipse at 20% 40%, rgba(232,196,184,.5), transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(138,158,140,.25), transparent 60%),
+    var(--parchment);
+
+  border:1px solid rgba(196,120,106,.2);
+  position:relative;
+  overflow:hidden;
+}
+
+/* TEXTOS */
+.drop-banner__eyebrow{
+  font-size:10px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--rose);
+  margin-bottom:12px;
+}
+
+.drop-banner__title{
+  font-family:var(--font-serif);
+  font-size:clamp(36px,4vw,58px);
+  font-weight:300;
+  line-height:1.05;
+  color:var(--dark);
+  margin-bottom:16px;
+}
+
+.drop-banner__title em{
+  color:var(--rose);
+  font-style:italic;
+}
+
+.drop-banner__desc{
+  font-size:14px;
+  color:var(--warm-gray);
+  line-height:1.8;
+  max-width:420px;
+}
+
+/* RIGHT SIDE */
+.drop-banner__right{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:24px;
+}
+
+/* COUNTDOWN */
+.countdown{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.countdown__item{
+  text-align:center;
+}
+
+.countdown__num{
+  font-family:var(--font-serif);
+  font-size:34px;
+  color:var(--rose);
+}
+
+.countdown__label{
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--warm-gray);
+}
+
+.countdown__sep{
+  font-size:18px;
+  color:var(--dusty);
+}
+
+/* RESPONSIVO */
+@media(max-width:1024px){
+  .drop-banner{
+    grid-template-columns:1fr;
+    padding:40px;
+    margin:0 28px 60px;
+    text-align:center;
+  }
+
+  .drop-banner__right{
+    align-items:center;
+  }
+}
 </style>
 </head>
 <body>
@@ -1081,7 +1182,46 @@ footer{
   </div>
   <div class="products-grid" id="productsGrid"></div>
 </section>
+<div class="drop-banner reveal" id="drop">
+  <div class="drop-banner__left">
+    <p class="drop-banner__eyebrow">✦ Lançamento exclusivo</p>
+    <h2 class="drop-banner__title">
+      DROP 05<br>
+      CHEGANDO<br>
+      <em>EM BREVE</em>
+    </h2>
+    <p class="drop-banner__desc">
+      A próxima coleção foi feita para quem vive na rua e não segue regras.
+      Quantidades extremamente limitadas.
+    </p>
+  </div>
 
+  <div class="drop-banner__right">
+    <div class="countdown">
+      <div class="countdown__item">
+        <span class="countdown__num" id="cd-days">00</span>
+        <span class="countdown__label">Dias</span>
+      </div>
+      <span class="countdown__sep">:</span>
+      <div class="countdown__item">
+        <span class="countdown__num" id="cd-hours">00</span>
+        <span class="countdown__label">Horas</span>
+      </div>
+      <span class="countdown__sep">:</span>
+      <div class="countdown__item">
+        <span class="countdown__num" id="cd-mins">00</span>
+        <span class="countdown__label">Min</span>
+      </div>
+      <span class="countdown__sep">:</span>
+      <div class="countdown__item">
+        <span class="countdown__num" id="cd-secs">00</span>
+        <span class="countdown__label">Seg</span>
+      </div>
+    </div>
+
+    <button class="btn-primary">Ser Avisado →</button>
+  </div>
+</div>
 <!-- SOBRE -->
 <section class="about section--alt" id="sobre">
   <div class="about__visual">
@@ -1412,6 +1552,30 @@ const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: .12 });
 revEls.forEach(r => obs.observe(r));
+
+/* ─── COUNTDOWN ─── */
+const targetDate = new Date();
+targetDate.setDate(targetDate.getDate() + 5); // muda aqui (ex: +5 dias)
+
+function updateCountdown(){
+  const now = new Date();
+  const diff = targetDate - now;
+
+  if(diff <= 0) return;
+
+  const d = Math.floor(diff / (1000*60*60*24));
+  const h = Math.floor((diff / (1000*60*60)) % 24);
+  const m = Math.floor((diff / (1000*60)) % 60);
+  const s = Math.floor((diff / 1000) % 60);
+
+  document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
 </script>
 </body>
 </html>
